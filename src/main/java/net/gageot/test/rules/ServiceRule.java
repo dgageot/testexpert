@@ -20,7 +20,7 @@ public class ServiceRule<T extends Service> extends ExternalResource {
 		this.serviceClass = serviceClass;
 	}
 
-	public static <T extends Service> ServiceRule<T> start(Class<T> serviceClass) {
+	public static <T extends Service> ServiceRule<T> startWithRandomPort(Class<T> serviceClass) {
 		return new ServiceRule<T>(serviceClass);
 	}
 

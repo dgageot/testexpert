@@ -7,13 +7,13 @@
 
     <name>TestExpert</name>
     <description>Unit/fonctional test helper classes</description>
-    <url>http://listmaker.gageot.net</url>
+    <url>http://testexpert.gageot.net</url>
 
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
-        <relativePath />
+        <relativePath/>
     </parent>
 
     <scm>
