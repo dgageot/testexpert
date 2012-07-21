@@ -33,7 +33,8 @@ public class ConsoleRecorder implements TestRule {
 		return recordedContent.toString();
 	}
 
-	public Statement apply(final Statement base, Description description) {
+  @Override
+  public Statement apply(final Statement base, Description description) {
 		return new Statement() {
 			@Override
 			public void evaluate() throws Throwable {

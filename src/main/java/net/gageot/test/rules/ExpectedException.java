@@ -18,7 +18,8 @@ public class ExpectedException implements TestRule {
 		// Nothing special
 	}
 
-	public Statement apply(final Statement base, final org.junit.runner.Description description) {
+  @Override
+  public Statement apply(final Statement base, final org.junit.runner.Description description) {
 		return new Statement() {
 			@Override
 			public void evaluate() throws Throwable {
@@ -68,7 +69,8 @@ public class ExpectedException implements TestRule {
 
 	private Matcher<Throwable> hasCause(final Class<? extends Throwable> causeClass) {
 		return new TypeSafeMatcher<Throwable>() {
-			public void describeTo(Description description) {
+      @Override
+      public void describeTo(Description description) {
 				description.appendText("exception with cause " + causeClass.getClass().getSimpleName());
 			}
 

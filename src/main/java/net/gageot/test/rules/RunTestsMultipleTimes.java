@@ -22,7 +22,8 @@ public class RunTestsMultipleTimes implements TestRule {
 		this.threads = threads;
 	}
 
-	public Statement apply(final Statement base, Description description) {
+  @Override
+  public Statement apply(final Statement base, Description description) {
 		return new Statement() {
 			@Override
 			public void evaluate() throws Throwable {
@@ -32,7 +33,8 @@ public class RunTestsMultipleTimes implements TestRule {
 
 				for (int i = 0; i < times; i++) {
 					results.add(executor.submit(new Runnable() {
-						public void run() {
+            @Override
+            public void run() {
 							try {
 								base.evaluate();
 							} catch (Throwable e) {

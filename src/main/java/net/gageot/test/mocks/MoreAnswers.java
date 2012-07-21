@@ -15,7 +15,8 @@ public class MoreAnswers {
 	@SuppressWarnings("unchecked")
 	public static <T extends Number> Answer<T> TIMES(final double factor) {
 		return new Answer<T>() {
-			public T answer(InvocationOnMock invocation) throws Throwable {
+      @Override
+      public T answer(InvocationOnMock invocation) throws Throwable {
 				BigDecimal input = new BigDecimal(((T) invocation.getArguments()[0]).doubleValue());
 				return (T) input.multiply(new BigDecimal(factor));
 			}
@@ -24,7 +25,8 @@ public class MoreAnswers {
 
 	public static Stubber execute(final Runnable action) {
 		return doAnswer(new Answer<Void>() {
-			public Void answer(InvocationOnMock i) {
+      @Override
+      public Void answer(InvocationOnMock i) {
 				action.run();
 				return null;
 			}
@@ -33,7 +35,8 @@ public class MoreAnswers {
 
 	public static Stubber executeAsync(final Runnable action) {
 		return doAnswer(new Answer<Void>() {
-			public Void answer(InvocationOnMock i) {
+      @Override
+      public Void answer(InvocationOnMock i) {
 				new Thread(action).start();
 				return null;
 			}

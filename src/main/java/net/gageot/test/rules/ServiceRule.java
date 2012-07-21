@@ -48,7 +48,6 @@ public class ServiceRule<T extends Service> extends ExternalResource {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private T createServive(int port) throws Exception {
 		try {
 			return serviceClass.getDeclaredConstructor(int.class, Module[].class).newInstance(port, modules);

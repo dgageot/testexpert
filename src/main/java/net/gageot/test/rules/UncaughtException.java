@@ -15,7 +15,8 @@ public class UncaughtException extends ExternalResource {
 		currentUncaughtExceptionHandler = Thread.currentThread().getUncaughtExceptionHandler();
 
 		Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler() {
-			public void uncaughtException(Thread t, Throwable e) {
+      @Override
+      public void uncaughtException(Thread t, Throwable e) {
 				uncaughtExceptions.add(e);
 			}
 		});
