@@ -42,6 +42,10 @@ public class ServiceRule<T> extends ExternalResource {
     this.modules = modules;
   }
 
+  public static <T> ServiceRule<T> startWithRandomPort(Class<T> serviceClass) {
+    return new ServiceRule<T>(serviceClass, (Module) null);
+  }
+
   public static <T> ServiceRule<T> startWithRandomPort(Class<T> serviceClass, Module... modules) {
     return new ServiceRule<T>(serviceClass, modules);
   }
