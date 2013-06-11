@@ -19,32 +19,33 @@
  */
 package net.gageot.test.rules;
 
-import org.junit.*;
+import static org.fest.assertions.Assertions.assertThat;
 
-import static org.fest.assertions.Assertions.*;
+import org.junit.Rule;
+import org.junit.Test;
 
 public class ConsoleRecorderTest {
-	@Rule
-	public ConsoleRecorder systemOut = ConsoleRecorder.recordSystemOut();
+    @Rule
+    public ConsoleRecorder systemOut = ConsoleRecorder.recordSystemOut();
 
-	@Rule
-	public ConsoleRecorder systemErr = ConsoleRecorder.recordSystemErr();
+    @Rule
+    public ConsoleRecorder systemErr = ConsoleRecorder.recordSystemErr();
 
-	@Test
-	public void canRecordSystemOut() {
-		System.out.println("OUTPUT1");
-		System.out.println("OUTPUT2");
+    @Test
+    public void canRecordSystemOut() {
+	System.out.println("OUTPUT1");
+	System.out.println("OUTPUT2");
 
-		assertThat(systemOut.getOutput()).contains("OUTPUT1\nOUTPUT2\n");
-		assertThat(systemErr.getOutput()).isEmpty();
-	}
+	assertThat(systemOut.getOutput()).matches("OUTPUT1\\r?\\nOUTPUT2\\r\\n");
+	assertThat(systemErr.getOutput()).isEmpty();
+    }
 
-	@Test
-	public void canRecordSystemErr() {
-		System.err.println("ERROR1");
-		System.err.println("ERROR2");
+    @Test
+    public void canRecordSystemErr() {
+	System.err.println("ERROR1");
+	System.err.println("ERROR2");
 
-		assertThat(systemErr.getOutput()).isEqualTo("ERROR1\nERROR2\n");
-		assertThat(systemOut.getOutput()).isEmpty();
-	}
+	assertThat(systemErr.getOutput()).matches("ERROR1\\r?\\nERROR2\\r\\n");
+	assertThat(systemOut.getOutput()).isEmpty();
+    }
 }
